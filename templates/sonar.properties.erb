@@ -155,7 +155,7 @@ sonar.notifications.delay=60
 
 # IMPORTANT : before activation, make sure that one Sonar administrator is defined in the external system
 # Activates the plugin. Leave blank or comment out to use default sonar authentication.
-sonar.authenticator.class: org.sonar.plugins.ldap.LdapAuthenticator
+sonar.security.realm=LDAP
 
 # Ignore failure at startup if the connection to external system is refused.
 # Users can browse sonar but not log in as long as the connection fails.
@@ -176,7 +176,8 @@ ldap.url: ldap<%= "s" if @ldap['ssl'] %>://<%= @ldap['hostname'] %>:<%= @ldap['p
 
 # (optional) Distinguished Name (DN) of the root node in LDAP from which to search for users,
 # eg. "ou=users,o=mycompany"
-ldap.baseDn: <%= @ldap['dn'] %>
+ldap.user.baseDn: <%= @ldap['userdn'] %>
+ldap.group.baseDn: <%= @ldap['groupdn'] %>
 
 # (optional) Bind DN is the username of an LDAP user to connect (or bind) with.
 # This is a Distinguished Name of a user who has administrative rights,
@@ -194,6 +195,8 @@ ldap.bindPassword: <%= @ldap['bind_password'] %>
 # Object class of LDAP users.
 # Default is 'inetOrgPerson'. Set 'user' for Microsoft Active Directory.
 #ldap.userObjectClass: user
+ldap.user.request: <%= @ldap['userrequest'] %>
+ldap.group.request: <%= @ldap['grouprequest'] %>
 
 # (advanced option) See http://java.sun.com/products/jndi/tutorial/ldap/security/auth.html
 # Default is 'simple'. Possible values: 'simple', 'CRAM-MD5', 'DIGEST-MD5', 'GSSAPI'.

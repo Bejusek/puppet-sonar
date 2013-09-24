@@ -1,0 +1,45 @@
+{
+  "name": "maestrodev-sonar",
+  "version": "1.0.3",
+  "summary": "Sonar installation and configuration",
+  "author": "maestrodev",
+  "description": "A module to install and configure Sonar",
+  "dependencies": [
+    {
+      "name": "maestrodev/wget",
+      "version_requirement": "\u003e\u003d0.0.1"
+    },
+    {
+      "name": "maestrodev/maven",
+      "version_requirement": "\u003e\u003d0.0.2"
+    },
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": "\u003e\u003d2.3.0"
+    }
+  ],
+  "types": [],
+  "checksums": {
+    ".fixtures.yml": "b15b5008808a3f01ed181311b4ebdf7f",
+    "Gemfile": "1f807d08f6916b82eff0efe2141cd17d",
+    "Gemfile.lock": "5ce58d6d5c729b083d823b6e05f65485",
+    "LICENSE": "3b83ef96387f14655fc854ddc3c6bd57",
+    "Modulefile": "8baf08f2c6f14cad75d115aa64a028c4",
+    "Puppetfile": "55d07d768a8c806bedfaf10a8e4f0916",
+    "Puppetfile.lock": "0c7233588c489243887a32962ce3646d",
+    "README.md": "99142b06bc387e48ea6f474f5c0f47da",
+    "Rakefile": "0aa6b09cd6c994710dda3f85964f0b14",
+    "manifests/init.pp": "5eb87e09049508c4e8979435660e79b0",
+    "manifests/move_to_home.pp": "36870eef25db2a327b55fe7b4a081320",
+    "manifests/plugin.pp": "8d9464a8bfc86c747508d0a56a130b13",
+    "spec/classes/init_spec.rb": "72a4d9f6b8e2b16a07789c34633dc998",
+    "spec/spec_helper.rb": "b60d9735dc7ca1d27e84c5c63d2fe412",
+    "templates/logback.xml.erb": "1db38a1a61684e1fec9c6f2d8cdc6b3a",
+    "templates/sonar.properties.erb": "411df87f6e64510872544a8bf18ea4c5",
+    "templates/sonar.sh.erb": "78e5643e3ca852de84940d27c75003c9",
+    "templates/wrapper.conf.erb": "e8e191ac61fc9141de7b9a7265adb363"
+  },
+  "source": "http://github.com/maestrodev/puppet-sonar",
+  "project_page": "http://github.com/maestrodev/puppet-sonar",
+  "license": "Apache License, Version 2.0"
+}

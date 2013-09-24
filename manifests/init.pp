@@ -27,7 +27,9 @@ class sonar (
     username          => 'sonar',
     password          => 'sonar',
   },
-  $log_folder = '/var/local/sonar/logs', $profile = false) {
+  $log_folder = '/var/local/sonar/logs', $profile = false,
+  $ldap_version = '1.3', $crowd_version = '1.3',
+  $runasserver = true ) {
 
   Exec {
     path => '/usr/bin:/usr/sbin:/bin:/sbin:/usr/local/bin'
@@ -131,6 +133,13 @@ class sonar (
     require => Exec['untar'],
     notify  => Service[$service],
   } ->
+  
+   # Sonar configuration files
+  file { "${installdir}/conf/wrapper.conf":
+    content => template('sonar/wrapper.conf.erb'),    
+    notify  => Service[$service],
+  } ->
+  
   # The plugins directory. Useful to later reference it from the plugin definition
   file { "${home}/extensions/plugins":
     ensure => directory,
@@ -139,14 +148,14 @@ class sonar (
   sonar::plugin { 'sonar-ldap-plugin' :
     ensure     => empty($ldap) ? {true => absent, false => present},
     artifactid => 'sonar-ldap-plugin',
-    version    => '1.0',
+    version    => $ldap_version,
     notify     => Service[$service],
   } ->
 
   sonar::plugin { 'sonar-crowd-plugin' :
     ensure     => empty($crowd) ? {true => absent, false => present},
     artifactid => 'sonar-crowd-plugin',
-    version    => '1.0',
+    version    => $crowd_version,
     notify     => Service[$service],
   } ->
 
