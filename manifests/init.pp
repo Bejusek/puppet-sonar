@@ -29,7 +29,12 @@ class sonar (
   },
   $log_folder = '/var/local/sonar/logs', $profile = false,
   $ldap_version = '1.3', $crowd_version = '1.3',
-  $runasserver = true ) {
+  $runasserver = true,
+  $wrapperConsoleLogFormat = 'PM',
+  $wrapperConsoleLogLevel = 'INFO',
+  $wrapperFileLogFormat = 'LPTM',
+  $wrapperFileLogLevel = 'INFO',
+  $wrapperSyslogLevel = 'NONE', ) {
 
   Exec {
     path => '/usr/bin:/usr/sbin:/bin:/sbin:/usr/local/bin'

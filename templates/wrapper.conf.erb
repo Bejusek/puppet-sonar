@@ -63,19 +63,19 @@ wrapper.app.parameter.1=org.sonar.application.StartServer
 # Wrapper Logging Properties
 #********************************************************************
 # Format of output for the console.  (See docs for formats)
-wrapper.console.format=PM
+wrapper.console.format=<%= @wrapperConsoleLogFormat %>
 
 # Log Level for console output.  (See docs for log levels)
-wrapper.console.loglevel=INFO
+wrapper.console.loglevel=<%= @wrapperConsoleLogLevel %>
 
 # Log file to use for wrapper output logging.
 wrapper.logfile=../../logs/sonar.log
 
 # Format of output for the log file.  (See docs for formats)
-wrapper.logfile.format=LPTM
+wrapper.logfile.format=<%= @wrapperFileLogFormat %>
 
 # Log Level for log file output.  (See docs for log levels)
-wrapper.logfile.loglevel=INFO
+wrapper.logfile.loglevel=<%= @wrapperFileLogLevel %>
 
 # Maximum size that the log file will be allowed to grow to before
 #  the log is rolled. Size is specified in bytes.  The default value
@@ -88,7 +88,7 @@ wrapper.logfile.loglevel=INFO
 #wrapper.logfile.maxfiles=0
 
 # Log Level for sys/event log output.  (See docs for log levels)
-wrapper.syslog.loglevel=NONE
+wrapper.syslog.loglevel=<%= @wrapperSyslogLevel %>
 
 #********************************************************************
 # Wrapper Windows Properties

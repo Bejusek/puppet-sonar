@@ -29,7 +29,7 @@
     "Puppetfile.lock": "0c7233588c489243887a32962ce3646d",
     "README.md": "99142b06bc387e48ea6f474f5c0f47da",
     "Rakefile": "0aa6b09cd6c994710dda3f85964f0b14",
-    "manifests/init.pp": "5eb87e09049508c4e8979435660e79b0",
+    "manifests/init.pp": "bc5f49520c70c6fdddb6f9a23418a290",
     "manifests/move_to_home.pp": "36870eef25db2a327b55fe7b4a081320",
     "manifests/plugin.pp": "8d9464a8bfc86c747508d0a56a130b13",
     "spec/classes/init_spec.rb": "72a4d9f6b8e2b16a07789c34633dc998",
@@ -37,7 +37,7 @@
     "templates/logback.xml.erb": "1db38a1a61684e1fec9c6f2d8cdc6b3a",
     "templates/sonar.properties.erb": "411df87f6e64510872544a8bf18ea4c5",
     "templates/sonar.sh.erb": "78e5643e3ca852de84940d27c75003c9",
-    "templates/wrapper.conf.erb": "e8e191ac61fc9141de7b9a7265adb363"
+    "templates/wrapper.conf.erb": "149ccc8391bde5d38c815f77309690cd"
   },
   "source": "http://github.com/maestrodev/puppet-sonar",
   "project_page": "http://github.com/maestrodev/puppet-sonar",
