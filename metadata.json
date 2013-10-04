@@ -31,7 +31,7 @@
     "Rakefile": "0aa6b09cd6c994710dda3f85964f0b14",
     "manifests/init.pp": "bc5f49520c70c6fdddb6f9a23418a290",
     "manifests/move_to_home.pp": "36870eef25db2a327b55fe7b4a081320",
-    "manifests/plugin.pp": "8d9464a8bfc86c747508d0a56a130b13",
+    "manifests/plugin.pp": "45c470250699d6811c2bbc06ddd55742",
     "spec/classes/init_spec.rb": "72a4d9f6b8e2b16a07789c34633dc998",
     "spec/spec_helper.rb": "b60d9735dc7ca1d27e84c5c63d2fe412",
     "templates/logback.xml.erb": "1db38a1a61684e1fec9c6f2d8cdc6b3a",

@@ -35,12 +35,18 @@ define sonar::plugin(
       before     => File[$plugin],
       require    => File[$plugin_dir],
     }
+    
+    exec { "removeOldVersions-${artifactid}":
+      command => "/bin/rm $plugin_dir/$artifactid-*.jar",
+    }
+    
     file { $plugin:
-      ensure => $ensure,
-      source => "/tmp/${plugin_name}",
-      owner  => $sonar::user,
-      group  => $sonar::group,
-      notify => Service['sonar'],
+      ensure  => $ensure,
+      source  => "/tmp/${plugin_name}",
+      owner   => $sonar::user,
+      group   => $sonar::group,
+      notify  => Service['sonar'],
+      require => Exec["removeOldVersions-${artifactid}"],
     }
   } else {
     # Uninstall plugin if absent
