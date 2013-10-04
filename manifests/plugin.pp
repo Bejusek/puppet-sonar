@@ -37,7 +37,7 @@ define sonar::plugin(
     }
     
     exec { "removeOldVersions-${artifactid}":
-      command => "/bin/rm $plugin_dir/$artifactid-*.jar",
+      command => "/bin/rm -f $plugin_dir/$artifactid-*.jar",
     }
     
     file { $plugin:
