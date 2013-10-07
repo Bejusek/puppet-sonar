@@ -149,6 +149,22 @@ class sonar (
   file { "${home}/extensions/plugins":
     ensure => directory,
   } ->
+  
+  #Plugin existence test script      
+  file { '/bin/SonarPluginTest' :
+    ensure  => present,
+    mode    => 0755,
+    content => "#!/bin/bash
+		tot=`ls \$1\$2-*.jar 2>/dev/null | wc -l`
+		ex=`ls \$1\$3 2>/dev/null | wc -l`
+		if [ \"\$tot\" -gt \"1\" ] || [ \"\$ex\" -eq \"0\" ]
+		then
+		  (exit 0)
+		else
+		  (exit 1)
+		fi
+		",      
+  } -> 
 
   sonar::plugin { 'sonar-ldap-plugin' :
     ensure     => empty($ldap) ? {true => absent, false => present},

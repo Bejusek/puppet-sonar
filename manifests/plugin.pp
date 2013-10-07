@@ -22,7 +22,7 @@ define sonar::plugin(
 
   $plugin_dir  = "${sonar::home}/extensions/plugins"
   $plugin_name = "${artifactid}-${version}.jar"
-  $plugin      = "${plugin_dir}/${plugin_name}"
+  $plugin      = "${plugin_dir}/${plugin_name}"  
 
   # Install plugin
   if $ensure == present {
@@ -37,8 +37,10 @@ define sonar::plugin(
     }
     
     exec { "removeOldVersions-${artifactid}":
-      command => "/bin/rm -f $plugin_dir/$artifactid-*.jar",
-      require => File[$plugin],
+      command => "rm -f ${plugin_dir}/${artifactid}-*.jar", 
+      onlyif  => "/bin/SonarPluginTest ${plugin_dir}/ ${artifactid}-*.jar $plugin_name",
+      before  => File[$plugin], 
+      require => Sonar::File['/bin/SonarPluginTest'],
     }
     
     file { $plugin:
@@ -47,6 +49,9 @@ define sonar::plugin(
       owner   => $sonar::user,
       group   => $sonar::group,
       notify  => Service['sonar'],
+      require => [
+        File[$plugin],
+      ],
     }
   } else {
     # Uninstall plugin if absent
