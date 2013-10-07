@@ -40,18 +40,19 @@ define sonar::plugin(
       command => "rm -f ${plugin_dir}/${artifactid}-*.jar", 
       onlyif  => "/bin/SonarPluginTest ${plugin_dir}/ ${artifactid}-*.jar $plugin_name",
       before  => File[$plugin], 
-      require => Sonar::File['/bin/SonarPluginTest'],
+      require => File['/bin/SonarPluginTest'],
     }
     
+    Exec {
+        path => ['/bin', '/sbin', '/usr/bin', '/usr/sbin', '/usr/local/bin', '/usr/local/sbin'],
+    }
+        
     file { $plugin:
       ensure  => $ensure,
       source  => "/tmp/${plugin_name}",
       owner   => $sonar::user,
       group   => $sonar::group,
       notify  => Service['sonar'],
-      require => [
-        File[$plugin],
-      ],
     }
   } else {
     # Uninstall plugin if absent
